@@ -11,9 +11,9 @@ exit(EXIT_SUCCESS);
 }
 else 
 {
-print_input("Error while reading input.\n");
+input_print("Error while reading input.\n");
 exit(EXIT_FAILURE);
 }
 }
-user_input[strcspn(user_input, "\n")] = '\0';
+print_input[strcspn(user_input, "\n")] = '\0';
 }
