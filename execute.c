@@ -7,9 +7,19 @@
  * return: void
  */
 
-void execute_command(const char *command)
+int execute_command(char **command, char **av, int idx)
 {
-pid_t child_pid = fork();
+char *full_command;
+pid_t child_pid;
+int status;
+full_command = get_path(command[0]);
+if (!full_command)
+{
+printerror(av[0], command[0], idx);
+freearray2D(command);
+return (127);
+}
+child_pid = fork();
 if (child_pid == -1)
 {
 print_input("Error forking process.\n");
@@ -17,24 +27,17 @@ exit(EXIT_FAILURE);
 }
 else if (child_pid == 0)
 {
-char *args[128];
-int arg_count = 0;
-
-char *token = strtok((char *)command, " ");
-while (token != NULL)
+if (execve(full_command, command, environ)== -1)
 {
-args[arg_count++] = token;
-token = strtok(NULL, " ");
+free(full_command), full_command = NULL;
+freearray2D(command);
 }
- args[arg_count] = NULL;
-
-execvp(args[0], args);
-
-print_input("Error executing command.\n");
-exit(EXIT_FAILURE);
 }
 else
 {
-wait(NULL);
+waitpid(child_pid, &status, 0);
+freearray2D(command);
+free(full_command), full_command = NULL;
 }
+return (WEXITSTATUS(status));
 }

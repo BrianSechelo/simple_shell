@@ -8,19 +8,25 @@
  **/
 int main(int ac, char **av)
 {
-	int j =0;
-	char command[128];
-	while(j < ac)
-	{
-		printf ("av[%d]:%s\n", j, av[j]); 
-                 ++j;
-	}
+	char *line = NULL, **command = NULL;
+	int status = 0, idx;
+	(void) ac;
 	
 	while (1)
 	{
-		brian_prompt();
-		read_command(command, sizeof(command));
-		execute_command(command);
+		line = read_line();
+		if (line == NULL)
+		{
+		if (isatty(STDIN_FILENO) == 0)
+                write(STDOUT_FILENO, "\n", 1);
+		return (status);
+		}
+		idx++;
+	        command = tokenizer(line);
+	      	if (!command)
+		continue;
+		
+		status = execute_command(command, av, idx);
 	}
 	return (0);
 }
