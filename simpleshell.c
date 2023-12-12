@@ -1,11 +1,12 @@
 #include "shell.h"
+
 /**
   * main - prompts user to enter input and executes user command
   * @ac: arg count
- * @av: arg vector
- * 
- * Return: 0 on success 1 on failure
- **/
+  *@av: arg vector
+  
+  * Return: 0 on success 1 on failure
+  **/
 int main(int ac, char **av)
 {
 	int j =0;
