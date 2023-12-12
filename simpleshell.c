@@ -25,7 +25,9 @@ int main(int ac, char **av)
 	        command = tokenizer(line);
 	      	if (!command)
 		continue;
-		
+		if (f_bultin(command[0]))
+		h_bultin(command, av, &status, idx);
+		else		
 		status = execute_command(command, av, idx);
 	}
 	return (0);
