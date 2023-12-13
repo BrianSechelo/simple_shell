@@ -1,4 +1,10 @@
 #include "shell.h"
+/**
+ * is_positive_number: function that checks for positive number
+ * @str: string
+ *
+ * Return: positive number
+*/
 int is_positive_number(char *str)
 {
 int i;
@@ -11,12 +17,18 @@ if (str[i] < '0' || str[i] > '9')
 }
 return (1);
 }
+/**
+ * __atoi: atoi function
+ * @str: string to be converted
+ *
+ * Return: number
+ */
 int _atoi(char *str)
 {
 int i, num = 0;
-for ( i = 0; str[i]; i++)
+for (i = 0; str[i]; i++)
 {
-num *=10;
+num *= 10;
 num *= (str[i] - '0');
 }
 return (num);

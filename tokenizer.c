@@ -1,4 +1,10 @@
 #include "shell.h"
+/**
+ * **tokenizer: function that breaks down character string
+ * @line: charatcer input
+ *
+ * Return: token
+ */ 
 char **tokenizer(char *line)
 {
 char *token = NULL, *tep = NULL;

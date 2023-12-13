@@ -1,5 +1,8 @@
 #include "shell.h"
-
+/**
+ *  f_bultin: function takes care of exit, environment and cd
+ *  @comm: input command
+ */
 int f_bultin(char *comm)
 {
 int i;
@@ -13,6 +16,15 @@ return (1);
 }
 return (0);
 }
+/**
+ * h_bultin: exit and print environment
+ * @*comm: command input
+ * @*av: argumnet
+ * @status: status of env
+ * @idx: interger data type
+ *
+ * Return: void
+ */
 void h_bultin(char **comm, char **av, int *status, int idx)
 {
 if (_strcmp(comm[0], "exit") == 0)
@@ -20,9 +32,18 @@ shell_exit(comm, av, status, idx);
 else if (_strcmp(comm[0], "env") == 0)
 env_print(comm, status);
 }
+/**
+ * shell_exit: exit command
+ * @*comm: command input
+ * @*av: argumnet
+ * @status: status of env
+ * @idx: interger data type
+ *
+ * Return: void
+ */
 void shell_exit(char **comm, char **av, int *status, int idx)
 {
-char * index, mssg[] = ": exit: illegal number: ";
+char *index, mssg[] = ": exit: illegal number: ";
 int exit_value = (*status);
 if (comm[1])
 {
@@ -37,7 +58,7 @@ write(STDERR_FILENO, av[0], _strlen(av[0]));
 write(STDERR_FILENO, ": ", 2);
 write(STDERR_FILENO, index, _strlen(index));
 write(STDERR_FILENO, mssg, _strlen(mssg));
-write(STDERR_FILENO, comm[1],_strlen(comm[1]));
+write(STDERR_FILENO, comm[1], _strlen(comm[1]));
 write(STDERR_FILENO, "\n", 1);
 free(index);
 freearray2D(comm);
@@ -48,6 +69,13 @@ return;
 freearray2D(comm);
 exit(exit_value);
 }
+/**
+ * env_print: print environment function
+ * @comm: input command
+ * @status: status parameter
+ *
+ * Return: void
+ */
 void env_print(char **comm, int *status)
 {
 int i;

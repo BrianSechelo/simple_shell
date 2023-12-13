@@ -29,12 +29,7 @@ int execute_command(char **command, char **av, int idx)
 	}
 
 	child_pid = fork();
-	if (child_pid == -1)
-	{
-		print_input("Error forking process.\n");
-		exit(EXIT_FAILURE);
-	}
-	else if (child_pid == 0)
+	if (child_pid == 0)
 	{
 		if (execve(full_command, command, environ) == -1)
 		{

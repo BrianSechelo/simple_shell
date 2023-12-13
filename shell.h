@@ -19,14 +19,14 @@ char *read_line(void);
 char **tokenizer(char *line);
 int execute_command(char **command, char **av, int idx);
 void print_input(const char *input);
-char *getenviron (char *varr);
+char *getenviron(char *varr);
 char *get_path(char *cmd);
 
-char *_strdup (const char *str);
-int _strcmp (char *string1, char *string2);
+char *_strdup(const char *str);
+int _strcmp(char *string1, char *string2);
 int _strlen(char *s);
-char *_strcat (char *destn, char *src);
-char *_strcpy (char *destn, char *src);
+char *_strcat(char *destn, char *src);
+char *_strcpy(char *destn, char *src);
 
 int f_bultin(char *comm);
 void h_bultin(char **comm, char **av, int *status, int idx);

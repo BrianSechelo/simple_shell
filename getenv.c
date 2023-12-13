@@ -1,7 +1,13 @@
 #include "shell.h"
-char *getenviron (char *varr)
+/**
+ * getenviron: function that gets the environment
+ * @varr: input parameter
+ *
+ * Return: environment
+ */
+char *getenviron(char *varr)
 {
-char *tep, *key, *value,*env;
+char *tep, *key, *value, *env;
 int i;
 
 for (i = 0; environ[i]; i++)
@@ -15,7 +21,7 @@ if (_strcmp(key, varr) == 0)
 	env = _strdup(value);
 	return (env);
 }
-free(tep),tep = NULL;
+free(tep), tep = NULL;
 }
 return (NULL);
 }

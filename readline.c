@@ -1,4 +1,9 @@
 #include "shell.h"
+/**
+ * read_line: function that writes to standard output
+ *
+ * Return: message to be written to standard output
+ */
 char *read_line(void)
 {
 char *line = NULL;
@@ -12,5 +17,5 @@ if (k == -1)
 free(line);
 return (NULL);
 }
-return(line);
+return (line);
 }

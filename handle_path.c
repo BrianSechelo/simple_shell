@@ -1,10 +1,16 @@
 #include "shell.h"
+/**
+ * get_path - gets the path of file
+ * @cmd: command parameter
+ *
+ * Return: char path
+ */
 char *get_path(char *cmd)
 {
 char *path_environ, *full_command, *dirr;
-int i; 
+int i;
 struct stat st;
-path_environ = getenviron ("PATH");
+path_environ = getenviron("PATH");
 if (!path_environ)
 return (NULL);
 dirr = strtok(path_environ, ":");
@@ -28,7 +34,7 @@ while (full_command)
 _strcpy(full_command, dirr);
 _strcat(full_command, "/");
 _strcat(full_command, cmd);
-if (stat(full_command,&st) == 0)
+if (stat(full_command, &st) == 0)
 {
 free(path_environ);
 return (full_command);
