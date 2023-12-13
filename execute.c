@@ -1,5 +1,14 @@
 #include "shell.h"
 
+void print_environment(void)
+{
+	int i;
+	for (i = 0; environ[i] != NULL; i++)
+	{
+		printf("%s\n", environ[i]);
+	}
+}
+
 /**
  * execute_command: creates a child process
  * @command: function parameter
@@ -26,6 +35,15 @@ int execute_command(char **command, char **av, int idx)
 	{
 		freearray2D(command);
 		exit(EXIT_SUCCESS);
+	}
+
+	/** Command is 'env' */
+	if (_strcmp(command[0], "env") == 0)
+	{
+		print_environment();
+		freearray2D(command);
+		free(full_command);
+		return (0);
 	}
 
 	child_pid = fork();
