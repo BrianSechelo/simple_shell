@@ -53,14 +53,14 @@ int execute_command(char **command, char **av, int idx)
 	}
 
 	/** Command is 'exit' */
-	if (_strcmp(command[0], "exit") == 0)
+	if (strcmp(command[0], "exit") == 0)
 	{
 		freearray2D(command);
 		exit(EXIT_SUCCESS);
 	}
 
 	/** Command is 'env' */
-	if (_strcmp(command[0], "env") == 0)
+	if (strcmp(command[0], "env") == 0)
 	{
 		print_environment();
 		freearray2D(command);

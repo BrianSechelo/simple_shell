@@ -18,10 +18,11 @@ void print_environment(void);
 void printerror(char *name, char *command, int idx);
 char *itoa(int m);
 void reverse_string(char *st, int len);
-char *_strdup(const char *str);
-int _strcmp(char *string1, char *string2);
-int _strlen(char *s);
+char *custom_strdup(const char *str);
+size_t custom_strlen(const char *str);
+int custom_strcmp(const char *s1, const char *s2);
 char *_strcat(char *destn, char *src);
 char *_strcpy(char *destn, char *src);
+char *get_path(char *cmd);
 
 #endif
