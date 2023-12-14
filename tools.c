@@ -4,13 +4,20 @@ void freearray2D(char **array)
 int i;
 if (!array)
 return;
-
 for (i = 0; array[i]; i++)
 {
 free(array[i]);
 array[i] = NULL;
 }
 free(array), array = NULL;
+}
+void print_environment(void)
+{
+	int i;
+	for (i = 0; environ[i] != NULL; i++)
+	{
+		printf("%s\n", environ[i]);
+	}
 }
 void printerror(char *name, char *command, int idx)
 {

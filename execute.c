@@ -1,12 +1,35 @@
 #include "shell.h"
 
+/**
+ * print_environment: Prints the current environment variables
+ */
+
 void print_environment(void)
 {
 	int i;
+	char **env_copy = malloc(sizeof(char *) * (MAX_ENV_VARS));
+
+	if (env_copy == NULL)
+	{
+		perror("Memory allocation error");
+		return;
+	}
+	
 	for (i = 0; environ[i] != NULL; i++)
 	{
+		env_copy[i] = strdup(environ[i]);
+		if (env_copy[i] == NULL)
+		{
+			perror("Memory allocation error");
+			/** frees previously allocated memory before the exit */
+			freearray2D(env_copy, i);
+			return;
+		}
 		printf("%s\n", environ[i]);
 	}
+
+{
+	freearray2D(env_copy, i);
 }
 
 /**
