@@ -34,6 +34,8 @@ void print_environment(void)
 /**
  * execute_command: creates a child process
  * @command: function parameter
+ * @av: function parameter
+ * @idx: function parameter
  *
  * return: void
  */
