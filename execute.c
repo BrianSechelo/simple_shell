@@ -3,7 +3,6 @@
 /**
  * print_environment: Prints the current environment variables
  */
-
 void print_environment(void)
 {
 	int i;
@@ -39,7 +38,6 @@ void print_environment(void)
  *
  * return: void
  */
-
 int execute_command(char **command, char **av, int idx)
 {
 	char *full_command;
