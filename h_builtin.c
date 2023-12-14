@@ -11,7 +11,7 @@ char *builtins[] = { "exit", "env", "setenv", "cd", NULL };
 
 for (i = 0; builtins[i]; i++)
 {
-if (_strcmp(comm, builtins[i]) == 0)
+if (strcmp(comm, builtins[i]) == 0)
 return (1);
 }
 return (0);
@@ -27,7 +27,7 @@ return (0);
  */
 void h_bultin(char **comm, char **av, int *status, int idx)
 {
-if (_strcmp(comm[0], "exit") == 0)
+if (strcmp(comm[0], "exit") == 0)
 shell_exit(comm, av, status, idx);
 else if (_strcmp(comm[0], "env") == 0)
 env_print(comm, status);
