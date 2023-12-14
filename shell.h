@@ -10,6 +10,7 @@
 #include <sys/wait.h>
 
 #define DELIM " \n\t"
+#define MAX_ENV_VARS 100
 
 extern char **environ;
 void freearray2D(char **array);

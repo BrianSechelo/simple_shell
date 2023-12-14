@@ -22,14 +22,13 @@ void print_environment(void)
 		{
 			perror("Memory allocation error");
 			/** frees previously allocated memory before the exit */
-			freearray2D(env_copy, i);
+			freearray2D(env_copy);
 			return;
 		}
 		printf("%s\n", environ[i]);
 	}
 
-{
-	freearray2D(env_copy, i);
+	freearray2D(env_copy); /** Moved outside of the loop */
 }
 
 /**
